@@ -1,14 +1,13 @@
 #include <stdio.h>
+#include <string.h> // Para usar strcspn e fgets
 
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das Cartas
 // Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste Álvaro Junqueira
+// Teste Álvaro Junqueira
 
 int main() {
     // Variáveis
-
     char estado1[2], estado2[2];
     char codigoCarta1[4], codigoCarta2[4];
     char nomeCidade1[30], nomeCidade2[30];
@@ -31,24 +30,30 @@ int main() {
     printf("Código da carta: ");
     scanf("%s", codigoCarta1);
 
+    // Limpa o buffer para evitar problemas com fgets
+    getchar();
+
     printf("Nome da cidade: ");
-    scanf("%[^\n]s", nomeCidade1);
+    fgets(nomeCidade1, sizeof(nomeCidade1), stdin); // Usa fgets para ler a string com espaços
+    // Remove o caractere de nova linha que fgets pode deixar
+    // sizeof(nomeCidade1) é usado para garantir que não ultrapasse o tamanho do buffer que é determinado
+    // pelo tamanho do array nomeCidade1
+    
+    nomeCidade1[strcspn(nomeCidade1, "\n")] = 0;
 
     printf("População: ");
     scanf("%d", &populacaoCidade1);
 
-    printf("Area: ");
+    printf("Área: ");
     scanf("%f", &areaCidade1);
 
     printf("PIB (bilhões): ");
     scanf("%f", &pibCidade1);
 
-    printf("Número de pontos túristicos: ");
+    printf("Número de pontos turísticos: ");
     scanf("%d", &numeroPontosTuristicosCidade1);
 
-
     // Carta 2
-
     printf("==================\n");
     printf("Insira os dados da carta 2:\n");
 
@@ -58,31 +63,31 @@ int main() {
     printf("Código da carta: ");
     scanf("%s", codigoCarta2);
 
+    // Como antes usamos scanf, precisamos limpar o buffer novamente para evitar problemas com fgets
+    getchar();
+
     printf("Nome da cidade: ");
-    scanf(" %[^\n]s", nomeCidade2);
+    fgets(nomeCidade2, sizeof(nomeCidade2), stdin);
+    nomeCidade2[strcspn(nomeCidade2, "\n")] = 0;
 
     printf("População: ");
     scanf("%d", &populacaoCidade2);
 
-    printf("Area: ");
+    printf("Área: ");
     scanf("%f", &areaCidade2);
 
     printf("PIB (bilhões): ");
     scanf("%f", &pibCidade2);
 
-    printf("Número de pontos túristicos: ");
+    printf("Número de pontos turísticos: ");
     scanf("%d", &numeroPontosTuristicosCidade2);
 
-
     // Exibição dos valores
-
-    printf("DADOS\n\n");
+    printf("\nDADOS\n");
 
     // Carta 1
-
     printf("==================\n");
     printf("CARTA 1\n");
-
     printf("Estado: %s\n", estado1);
     printf("Código: %s\n", codigoCarta1);
     printf("Nome da Cidade: %s\n", nomeCidade1);
@@ -92,10 +97,8 @@ int main() {
     printf("Número de Pontos Turísticos: %d\n", numeroPontosTuristicosCidade1);
 
     // Carta 2
-
     printf("==================\n");
     printf("CARTA 2\n");
-
     printf("Estado: %s\n", estado2);
     printf("Código: %s\n", codigoCarta2);
     printf("Nome da Cidade: %s\n", nomeCidade2);
