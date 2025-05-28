@@ -118,6 +118,28 @@ int main() {
 
     // Calcula PIB per capita da carta 2
     printf("PIB per capita: %.2f reais\n", (pibCidade2  / populacaoCidade2));
+    /*
+    Comparação das cartas
+    
+    Nessa etapa, iremos comparar apenas um dos atributos das duas cartas, por exemplo, a população, e decidir
+    qual carta é a "vencedora" com base nesse critério. O formato de saída será algo como:
+    
+    Comparação de cartas (Atributo: População):
+    Carta 1 - São Paulo (SP): 12.300.000
+    Carta 2 - Rio de Janeiro (RJ): 6.000.000
+    Resultado: Carta 1 (São Paulo) venceu!
+    */
+    printf("==================\n");
+    printf("COMPARAÇÃO DE CARTAS (Atributo: População):\n");
+    printf("Carta 1 - %s (%s): %d\n", nomeCidade1, estado1, populacaoCidade1);
+    printf("Carta 2 - %s (%s): %d\n", nomeCidade2, estado2, populacaoCidade2);
+    if (populacaoCidade1 > populacaoCidade2) {
+        printf("Resultado: Carta 1 (%s) venceu!\n", nomeCidade1);
+    } else if (populacaoCidade1 < populacaoCidade2) {
+        printf("Resultado: Carta 2 (%s) venceu!\n", nomeCidade2);
+    } else {
+        printf("Resultado: Empate!\n");
+    }
 
     return 0;
 }
